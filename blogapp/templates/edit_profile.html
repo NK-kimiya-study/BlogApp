@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}プロフィール編集{% endblock %}
+{% block contents %}
+<form method="post" class="post-create-form">
+    <h3>プルフィール編集</h3>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">更新</button>
+</form>
+{% endblock %}

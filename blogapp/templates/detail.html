@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}記事：詳細{% endblock %}
+{% block contents %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col offset-3">
+            <h2>{{object.title}}</h2>
+            <p>{{object.text}}</p>
+            <br>
+            <p>{{object.posted_at}}に投稿</p>
+            {% if object.image1 %}
+            <p><img src="{{object.image1.url}}" class="post-image"></img></p>
+            {% endif %}
+            {% if request.user == object.user %}
+            <a href="{%url 'blogapp:post_delete' object.pk%}" class="btn btn-primary my-2">削除</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

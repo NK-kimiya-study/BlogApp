@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}マイページ{% endblock %}
+{% block contents %}
+{% if user.is_authenticated %}
+<br>
+<div style="text-align: center;">
+    <a href="{% url 'blogapp:edit_profile' %}">プロフィール編集</a>
+    <h4>{{user.username}}さんのマイページ</h4>
+    {% if object_list.count == 0 %}
+    <p>{{user.username}}さんの投稿はありません</p>
+    {% else %}
+    <p>投稿<strong>{{object_list.count}}件</strong></p>
+    {% endif %}
+    <a href="{% url 'blogapp:create_post' %}">投稿する</a>
+    <a href="{% url 'blogapp:mypage-group' %}">作成したグループ</a>
+</div>
+<hr>
+{% endif %}
+{% for record in object_list %}
+<div class="post-list-wrap">
+    <div class="post-item">
+        <p class="title"><a href="{% url 'blogapp:post_detail' record.pk %}">{{record.title}}</a></p>
+        <p class="text">{{record.text|truncatechars:20}}</p>
+        <a href="{% url 'blogapp:edit_post' post_id=record.pk %}">{{record.user.username}}</a>
+    </div>
+</div>
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+        <a href="?page=1{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">&laquo; 最初</a>
+        <a
+            href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">前へ</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+        <span class="current">{{ num }}</span>
+        {% else %}
+        <a href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <a
+            href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">次へ</a>
+        <a
+            href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">最後
+            &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

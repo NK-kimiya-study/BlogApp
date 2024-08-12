@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block titile %}グループ|作成{% endblock %}
+{% block contents %}
+<form method="post" class="post-create-form">
+    <h3>グループ作成</h3>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">作成</button>
+</form>
+{% endblock %}

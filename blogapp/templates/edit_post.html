@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}記事：編集{% endblock %}
+{% block contents %}
+<h1>編集</h1>
+<form method="POST" enctype="multipart/form-data" class="post-create-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">更新</button>
+</form>
+<p>{{post.user.id}}</p>
+<a href="{% url 'blogapp:user_posts_and_profile' user_id=post.user.id %}">Back to Profile</a>
+{% endblock %}

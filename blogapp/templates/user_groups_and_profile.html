@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}{{ user.username }}のプロフィール{% endblock %}
+{% block contents %}
+<div class="user-profile-area">
+    <p class="username-text">{{ user_name.username }}</p>
+    <p class="profile-text">{{ user_name.profile }}</p>
+    <a href="{% url 'blogapp:user_posts_and_profile' user_id=user_name.id %}">{{user_name.username}}さんの記事</a>
+</div>
+
+{% for group in groups %}
+<div class="post-list-wrap">
+    <div class="post-item">
+        <p class="title">{{group.title}}</p>
+        <p class="text">招待リンク：グループID{{group.share}}</p>
+        <p class="text">{{group.text}}</p>
+        <a>{{post.user.username}}</a>
+        <small>{{group.posted_at}}</small>
+    </div>
+</div>
+{% empty %}
+<p>グループはありません。</p>
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if groups.has_previous %}
+        <a href="?page=1">&laquo; 最初</a>
+        <a href="?page={{ groups.previous_page_number }}">前へ</a>
+        {% endif %}
+
+        {% for num in groups.paginator.page_range %}
+        {% if groups.number == num %}
+        <span class="current">{{ num }}</span>
+        {% else %}
+        <a href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+        {% endfor %}
+
+        {% if groups.has_next %}
+        <a href="?page={{ groups.next_page_number }}">次へ</a>
+        <a href="?page={{ groups.paginator.num_pages }}">最後 &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{%endblock%}

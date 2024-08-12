@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block titile %}ブログ|投稿{% endblock %}
+{% block contents %}
+<form method="post" enctype="multipart/form-data" class="post-create-form">
+    <h3>記事投稿</h3>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">投稿</button>
+</form>
+{% endblock %}

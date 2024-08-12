@@ -1,0 +1,120 @@
+.post-list-wrap {
+    width: 80%;
+    margin: 40px auto;
+    background-color: white;
+}
+
+.post-list-wrap .title {
+    font-size: 25px;
+}
+
+.post-item {
+    border-bottom: solid 1px gainsboro;
+}
+
+.post-item a {
+    color: #ffccd0;
+}
+
+.post-image {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+}
+
+.btn-outline-primary {
+    border: solid 1px #ffccd0;
+    color: #ffccd0;
+}
+
+.btn-primary {
+    background-color: #ffccd0;
+    color: white;
+    border: none;
+}
+
+.nav-link {
+    color: #5f9ea0;
+    font-size: 20px;
+}
+
+.user-profile-area {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.post-create-form {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.post-create-form p {
+    text-align: center;
+}
+
+.post-create-form button {
+    display: block;
+    background-color: #ffccd0;
+    border: solid 1px #ffccd0;
+    padding: 10px 20px;
+    margin: 20px auto;
+    color: white;
+}
+
+.create-btn-area button {
+    background-color: #5f9ea0;
+    border: solid 1px #5f9ea0;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.create-btn-area button a {
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+button:hover {
+    background-color: gray !important;
+    border: none;
+}
+
+a:hover {
+    color: gray !important;
+}
+
+.app-logo img {
+    display: block;
+    width: 150px;
+}
+
+.search-form {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.pagination {
+    width: 80%;
+    margin: 20px auto;
+    padding-bottom: 50px;
+}
+
+.step-links,
+.step-links a {
+    font-size: 30px;
+    color: #ffccd0;
+}
+
+.current {
+    color: gainsboro;
+}
+
+.post-item .group-delete-btn {
+    color: white !important;
+}
+
+.post-item {
+    font-size: 25px;
+}
